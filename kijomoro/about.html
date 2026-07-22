@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | Kijomoro S.S</title>
+    <style>
+        :root {
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #eef4ff;
+            color: #13204a;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: radial-gradient(circle at top left, rgba(84, 118, 255, 0.18), transparent 28%),
+                radial-gradient(circle at bottom right, rgba(42, 57, 207, 0.22), transparent 24%),
+                #eef4ff;
+            color: #13204a;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), transparent 38%);
+            pointer-events: none;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.86);
+            box-shadow: 0 20px 45px rgba(28, 44, 91, 0.08);
+            backdrop-filter: blur(14px);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .brand img {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            background: white;
+            border: 1px solid rgba(34, 58, 132, 0.12);
+            object-fit: contain;
+            padding: 0.4rem;
+            box-shadow: 0 16px 40px rgba(34, 58, 132, 0.08);
+        }
+
+        .brand-title strong {
+            display: block;
+            font-size: 1rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #142556;
+        }
+
+        .brand-title span {
+            display: block;
+            font-size: 0.85rem;
+            color: #5a6b9b;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #2f3d72;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #1f2f72;
+        }
+
+        .page-head {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .page-head h1 {
+            margin: 0;
+            font-size: clamp(3rem, 5vw, 4.2rem);
+            line-height: 0.98;
+        }
+
+        .page-head p {
+            margin: 1.4rem 0 0;
+            max-width: 56ch;
+            font-size: 1.02rem;
+            line-height: 1.9;
+            color: #4d5c8a;
+        }
+
+        .section {
+            max-width: 1140px;
+            margin: 0 auto 2.5rem;
+            padding: 0 2rem;
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 28px;
+            padding: 2rem;
+            box-shadow: 0 26px 70px rgba(20, 46, 90, 0.08);
+            border: 1px solid rgba(115, 146, 255, 0.08);
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h2 {
+            margin: 0 0 1rem;
+            font-size: 1.3rem;
+            color: #172d5d;
+        }
+
+        .card p {
+            margin: 0;
+            line-height: 1.85;
+            color: #4c5b8a;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.4rem;
+            margin-top: 1.5rem;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 24px;
+            padding: 1.6rem;
+            box-shadow: 0 18px 38px rgba(20, 46, 90, 0.06);
+            border: 1px solid rgba(115, 146, 255, 0.08);
+            text-align: center;
+        }
+
+        .value-card strong {
+            display: block;
+            font-size: 1.1rem;
+            color: #1e2d59;
+            margin-bottom: 0.6rem;
+        }
+
+        .value-card p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #4c5b8a;
+        }
+
+        .programs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.6rem;
+            margin-top: 1.5rem;
+        }
+
+        .program-item {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 24px;
+            padding: 1.8rem;
+            border: 1px solid rgba(115, 146, 255, 0.08);
+            box-shadow: 0 18px 38px rgba(20, 46, 90, 0.06);
+        }
+
+        .program-item h3 {
+            margin: 0 0 0.8rem;
+            font-size: 1.1rem;
+            color: #1e2d59;
+        }
+
+        .program-item p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #4c5b8a;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #172d5d;
+            margin: 0 0 1.8rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.4rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, rgba(47, 69, 247, 0.12), rgba(95, 118, 255, 0.16));
+            border-radius: 24px;
+            padding: 1.8rem;
+            text-align: center;
+            border: 1px solid rgba(47, 69, 247, 0.2);
+        }
+
+        .stat-box strong {
+            display: block;
+            font-size: 2rem;
+            color: #2f45f7;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #1f2f72;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(47, 69, 247, 0.12), rgba(95, 118, 255, 0.16));
+            border-radius: 32px;
+            padding: 2.4rem;
+            text-align: center;
+            border: 1px solid rgba(47, 69, 247, 0.2);
+            margin-top: 2.5rem;
+        }
+
+        .cta-section h2 {
+            margin: 0 0 1rem;
+            color: #1e2d59;
+        }
+
+        .cta-section p {
+            margin: 0 0 1.5rem;
+            color: #4c5b8a;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.95rem 1.75rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #2f45f7, #5f76ff);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 18px 35px rgba(47, 69, 247, 0.22);
+        }
+
+        @media (max-width: 1024px) {
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .programs {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 1rem 1.25rem;
+            }
+
+            .page-head {
+                padding: 2.5rem 1.25rem 1rem;
+            }
+
+            .section {
+                padding: 0 1.25rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="brand">
+            <img src="MEDIA/file_000000000e5071f49ad4fd8a62d7524c.png" alt="Kijomoro S.S logo" />
+            <div class="brand-title">
+                <strong>Kijomoro S.S</strong>
+                <span>About Us</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="admission.html">Admission</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-head">
+            <h1>About Kijomoro Secondary School</h1>
+            <p>
+                Since our foundation, Kijomoro S.S has been dedicated to fostering academic excellence, character
+                development,
+                and community leadership. Our commitment is to empower every learner with the knowledge, skills, and
+                values
+                needed for success.
+            </p>
+        </section>
+
+        <section class="section">
+            <div class="mission-vision">
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h2>Our Mission</h2>
+                    <p>
+                        To provide high-quality education that develops critical thinkers, compassionate leaders, and
+                        responsible citizens committed to building a better society for all.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">✨</div>
+                    <h2>Our Vision</h2>
+                    <p>
+                        A school where every student succeeds academically, grows as a person, and prepares to make a
+                        positive impact in their communities and the wider world.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">Core Values</h3>
+            <div class="values-grid">
+                <div class="value-card">
+                    <strong>Excellence</strong>
+                    <p>We pursue the highest standards in academic achievement and personal growth.</p>
+                </div>
+                <div class="value-card">
+                    <strong>Integrity</strong>
+                    <p>We uphold honesty, responsibility, and ethical conduct in all our actions.</p>
+                </div>
+                <div class="value-card">
+                    <strong>Community</strong>
+                    <p>We foster belonging, collaboration, and mutual respect among all members.</p>
+                </div>
+                <div class="value-card">
+                    <strong>Innovation</strong>
+                    <p>We embrace modern teaching methods and encourage creative problem-solving.</p>
+                </div>
+                <div class="value-card">
+                    <strong>Resilience</strong>
+                    <p>We build perseverance and the courage to overcome challenges and grow.</p>
+                </div>
+                <div class="value-card">
+                    <strong>Inclusivity</strong>
+                    <p>We celebrate diversity and provide equal opportunities for all learners.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">Academic Structure</h3>
+            <div class="programs">
+                <div class="program-item">
+                    <h3>O-Level (Forms 1–4)</h3>
+                    <p>
+                        Foundation years focused on core academics including mathematics, languages, sciences, and
+                        social studies.
+                        Students develop essential skills and knowledge to prepare for advanced studies.
+                    </p>
+                </div>
+                <div class="program-item">
+                    <h3>A-Level (Forms 5–6)</h3>
+                    <p>
+                        Specialized advanced coursework in science, commerce, and humanities streams. Students pursue
+                        in-depth study
+                        of chosen subjects to prepare for university and professional careers.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">Academic Programs</h3>
+            <div class="programs">
+                <div class="program-item">
+                    <h3>Science & Technology</h3>
+                    <p>
+                        Cutting-edge labs and hands-on learning in physics, chemistry, biology, and information
+                        technology
+                        to inspire tomorrow's innovators.
+                    </p>
+                </div>
+                <div class="program-item">
+                    <h3>Languages & Literature</h3>
+                    <p>
+                        Rigorous instruction in English, Kiswahili, and foreign languages combined with creative writing
+                        and critical analysis.
+                    </p>
+                </div>
+                <div class="program-item">
+                    <h3>Mathematics & Engineering</h3>
+                    <p>
+                        Comprehensive curriculum developing quantitative reasoning and applied problem-solving for
+                        real-world applications.
+                    </p>
+                </div>
+                <div class="program-item">
+                    <h3>Sports & Arts</h3>
+                    <p>
+                        Extracurricular excellence in athletics, music, drama, and visual arts to nurture well-rounded
+                        learners.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">Spiritual & Religious Life</h3>
+            <div class="card">
+                <p>
+                    Kijomoro S.S is a secular institution that respects and celebrates the diverse religious and
+                    spiritual
+                    beliefs of our entire student community. We provide inclusive religious activities and observances
+                    for all faiths,
+                    including Christianity, Islam, Judaism, Hinduism, Buddhism, and other religious traditions. Our
+                    chaplaincy program
+                    offers pastoral care, faith-based clubs, prayer spaces, and interfaith dialogue opportunities that
+                    help students
+                    explore their spirituality while fostering mutual respect and understanding. Whether through
+                    worship, meditation,
+                    scripture study, or spiritual reflection, we support the religious growth and well-being of every
+                    learner.
+                    We believe that spiritual development and ethical values are central to character building and help
+                    our students
+                    become compassionate, responsible citizens.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">By the Numbers</h3>
+            <div class="stats">
+                <div class="stat-box">
+                    <strong>1,200+</strong>
+                    <p>Students</p>
+                </div>
+                <div class="stat-box">
+                    <strong>28</strong>
+                    <p>Programs</p>
+                </div>
+                <div class="stat-box">
+                    <strong>85%</strong>
+                    <p>Pass Rate</p>
+                </div>
+                <div class="stat-box">
+                    <strong>15+</strong>
+                    <p>Awards</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cta-section">
+            <h2>Ready to Learn More?</h2>
+            <p>Join our community of scholars and leaders. Explore admission opportunities or contact us with questions.
+            </p>
+            <a href="admission.html" class="cta-button">Start Your Journey</a>
+        </section>
+    </main>
+</body>
+
+</html>

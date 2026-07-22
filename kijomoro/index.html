@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kijomoro S.S | Home</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #eef4ff;
+      color: #13204a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, rgba(84, 118, 255, 0.18), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(42, 57, 207, 0.22), transparent 24%),
+        #eef4ff;
+      color: #13204a;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), transparent 35%);
+      pointer-events: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 20px 45px rgba(28, 44, 91, 0.08);
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .brand img {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      border: 1px solid rgba(34, 58, 132, 0.12);
+      background: white;
+      padding: 0.5rem;
+      object-fit: contain;
+      box-shadow: 0 16px 40px rgba(34, 58, 132, 0.08);
+    }
+
+    .brand-title {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-title strong {
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #142556;
+    }
+
+    .brand-title span {
+      font-size: 0.88rem;
+      color: #5a6b9b;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #2f3d72;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #1f2f72;
+    }
+
+    main {
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero {
+      display: grid;
+      align-items: center;
+      min-height: calc(100vh - 110px);
+      padding: 3rem 2rem 4rem;
+      max-width: 1180px;
+      margin: 0 auto;
+      gap: 2.75rem;
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      font-size: clamp(3.1rem, 5vw, 4.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-copy p {
+      margin: 1.5rem 0 0;
+      max-width: 46ch;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #414f82;
+    }
+
+    .hero-copy .motto {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-top: 1.8rem;
+      padding: 0.9rem 1.1rem;
+      border-radius: 999px;
+      background: rgba(33, 58, 200, 0.1);
+      color: #1e3072;
+      font-weight: 700;
+      border: 1px solid rgba(33, 58, 200, 0.14);
+    }
+
+    .hero-actions {
+      margin-top: 2.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 1.9rem;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, #2f45f7, #5f76ff);
+      color: #fff;
+      box-shadow: 0 18px 35px rgba(47, 69, 247, 0.28);
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.95);
+      color: #2f45f7;
+      border: 1px solid rgba(47, 69, 247, 0.14);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 32px;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 30px 80px rgba(15, 38, 98, 0.12);
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(95, 118, 255, 0.16), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(40, 57, 190, 0.14), transparent 28%);
+      pointer-events: none;
+    }
+
+    .hero-panel-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-panel h2 {
+      margin: 0;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+      color: #202f58;
+    }
+
+    .hero-panel p {
+      margin: 1rem 0 0;
+      line-height: 1.8;
+      color: #5b6c9d;
+    }
+
+    .statistics {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 2rem;
+    }
+
+    .stat {
+      padding: 1.4rem 1.3rem;
+      border-radius: 22px;
+      background: white;
+      box-shadow: 0 15px 36px rgba(28, 46, 88, 0.06);
+    }
+
+    .stat small {
+      display: block;
+      color: #6a7aac;
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.75rem;
+      margin-top: 0.35rem;
+      color: #172d5d;
+    }
+
+    .embed-section {
+      max-width: 1180px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+    }
+
+    .embed-section h2 {
+      margin: 0 0 1.3rem;
+      font-size: 1.6rem;
+      color: #1e2d59;
+    }
+
+    .embed-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      background: #ffffff;
+      box-shadow: 0 24px 80px rgba(24, 43, 103, 0.12);
+      min-height: 520px;
+    }
+
+    .embed-container iframe {
+      width: 100%;
+      height: 520px;
+      border: 0;
+      display: block;
+    }
+
+    .event-note {
+      margin: 1rem 0 0;
+      color: #56658f;
+      font-size: 0.97rem;
+    }
+
+    .section-title {
+      margin: 0 0 1.4rem;
+      font-size: 2rem;
+      color: #172d5d;
+      text-align: center;
+    }
+
+    .admin-grid {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .admin-grid::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .admin-grid::-webkit-scrollbar-thumb {
+      background: rgba(47, 69, 247, 0.25);
+      border-radius: 999px;
+    }
+
+    .admin-card {
+      flex: 1 0 280px;
+      min-width: 260px;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 24px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 18px 45px rgba(24, 43, 103, 0.1);
+      border: 1px solid rgba(115, 146, 255, 0.12);
+    }
+
+    .admin-photo {
+      width: 92px;
+      height: 92px;
+      border-radius: 24px;
+      object-fit: cover;
+      margin: 0 auto 1rem;
+      display: block;
+    }
+
+    .admin-card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+      color: #1f2f72;
+    }
+
+    .admin-card span {
+      display: block;
+      color: #5c6b9d;
+      margin-bottom: 0.85rem;
+      font-weight: 700;
+    }
+
+    .admin-card p {
+      margin: 0;
+      color: #56658f;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .gallery-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 26px 75px rgba(20, 46, 90, 0.12);
+      border: 1px solid rgba(115, 146, 255, 0.12);
+    }
+
+    .carousel {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      flex-shrink: 0;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      min-height: 320px;
+    }
+
+    .carousel-controls {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+      pointer-events: none;
+    }
+
+    .carousel-button {
+      pointer-events: auto;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.88);
+      color: #2f45f7;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 16px 34px rgba(23, 50, 102, 0.16);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .carousel-button:hover {
+      transform: scale(1.05);
+      background: #ffffff;
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .carousel-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: rgba(47, 69, 247, 0.35);
+      border: 1px solid rgba(47, 69, 247, 0.45);
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .carousel-dot.active {
+      width: 14px;
+      height: 14px;
+      background: #2f45f7;
+      border-color: #2f45f7;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 2.5rem;
+      }
+
+      .statistics {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .admin-grid {
+        flex-wrap: nowrap;
+      }
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 1rem 1.25rem;
+      }
+
+      .hero {
+        padding: 2rem 1.25rem 3rem;
+      }
+
+      nav {
+        gap: 1rem;
+      }
+
+      .hero-copy h1 {
+        font-size: 3rem;
+      }
+
+      .statistics {
+        grid-template-columns: 1fr;
+      }
+
+      .embed-container iframe {
+        height: 420px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="brand">
+      <img src="MEDIA/file_000000000e5071f49ad4fd8a62d7524c.png" alt="Kijomoro Secondary School logo" />
+      <div class="brand-title">
+        <strong>Kijomoro Secondary School</strong>
+        <span>Struggle for Success</span>
+      </div>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="admission.html">Admission</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <h1>Welcome to Kijomoro Secondary School</h1>
+        <p>
+          Building scholar leaders with passion, purpose, and perseverance. Explore our academic excellence,
+          student programs, and community values that help every learner succeed.
+        </p>
+
+        <div class="hero-actions">
+          <a href="admission.html" class="button button-primary">Apply Now</a>
+          <a href="about.html" class="button button-secondary">Learn More</a>
+        </div>
+
+        <div class="motto">OUR MOTO — WE STRUGGLE FOR SUCCESS</div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="hero-panel-content">
+          <h2>School Leadership</h2>
+          <p>
+            At Kijomoro S.S, our mission is to shape confident, responsible students who are ready for the future.
+            We combine strong academics with sports, technology, and personal growth.
+          </p>
+
+          <div class="statistics">
+            <div class="stat">
+              <small>Students</small>
+              <strong>1,200+</strong>
+            </div>
+            <div class="stat">
+              <small>Programs</small>
+              <strong>28</strong>
+            </div>
+            <div class="stat">
+              <small>Awards</small>
+              <strong>15+</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="embed-section">
+      <h2 class="section-title">School Administrators</h2>
+      <div class="admin-grid">
+        <div class="admin-card">
+          <img class="admin-photo"
+            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80"
+            alt="Director of Studies" />
+          <h3>The Director of Studies</h3>
+          <span>Academic Leadership</span>
+          <p>He guides the academic activities of the school and ensures lessons and study sessions are well executed.
+          </p>
+        </div>
+        <div class="admin-card">
+          <img class="admin-photo"
+            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80"
+            alt="Deputy Administration" />
+          <h3>The Deputy</h3>
+          <span>Deputy Administration</span>
+          <p>She supports school operations, administration, and student welfare across all departments.</p>
+        </div>
+        <div class="admin-card">
+          <img class="admin-photo"
+            src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=800&q=80"
+            alt="Headmaster" />
+          <h3>Lonya (HM)</h3>
+          <span>Headteacher</span>
+          <p>He is the headteacher of Kijomoro Secondary School, leading the school with vision and care.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="embed-section">
+      <h2 class="section-title">School Gallery</h2>
+      <div class="gallery-card">
+        <div class="carousel" id="galleryCarousel">
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80"
+                alt="School classroom" />
+            </div>
+            <div class="carousel-slide">
+              <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80"
+                alt="Students outdoors" />
+            </div>
+            <div class="carousel-slide">
+              <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1200&q=80"
+                alt="School library" />
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-button" id="prevButton" aria-label="Previous slide">‹</button>
+            <button class="carousel-button" id="nextButton" aria-label="Next slide">›</button>
+          </div>
+        </div>
+        <div class="carousel-dots" id="carouselDots">
+          <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
+          <button class="carousel-dot" data-index="1" aria-label="Slide 2"></button>
+          <button class="carousel-dot" data-index="2" aria-label="Slide 3"></button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <script>
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+    const dotsNav = document.getElementById('carouselDots');
+    const dots = Array.from(dotsNav.children);
+    let currentIndex = 0;
+
+    function updateCarousel(newIndex) {
+      if (newIndex < 0) newIndex = slides.length - 1;
+      if (newIndex >= slides.length) newIndex = 0;
+      currentIndex = newIndex;
+      const slideWidth = slides[0].getBoundingClientRect().width;
+      track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+      dots.forEach((dot, index) => dot.classList.toggle('active', index === currentIndex));
+    }
+
+    prevButton.addEventListener('click', () => updateCarousel(currentIndex - 1));
+    nextButton.addEventListener('click', () => updateCarousel(currentIndex + 1));
+    dots.forEach(dot => dot.addEventListener('click', event => updateCarousel(Number(event.target.dataset.index))));
+
+    window.addEventListener('resize', () => updateCarousel(currentIndex));
+    setInterval(() => updateCarousel(currentIndex + 1), 6000);
+  </script>
+</body>
+
+</html>

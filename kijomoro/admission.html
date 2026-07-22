@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admission | Kijomoro S.S</title>
+    <style>
+        :root {
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #eef4ff;
+            color: #13204a;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: radial-gradient(circle at top left, rgba(84, 118, 255, 0.18), transparent 28%),
+                radial-gradient(circle at bottom right, rgba(42, 57, 207, 0.22), transparent 24%),
+                #eef4ff;
+            color: #13204a;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), transparent 38%);
+            pointer-events: none;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.86);
+            box-shadow: 0 20px 45px rgba(28, 44, 91, 0.08);
+            backdrop-filter: blur(14px);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .brand img {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            background: white;
+            border: 1px solid rgba(34, 58, 132, 0.12);
+            object-fit: contain;
+            padding: 0.4rem;
+            box-shadow: 0 16px 40px rgba(34, 58, 132, 0.08);
+        }
+
+        .brand-title strong {
+            display: block;
+            font-size: 1rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #142556;
+        }
+
+        .brand-title span {
+            display: block;
+            font-size: 0.85rem;
+            color: #5a6b9b;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #2f3d72;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #1f2f72;
+        }
+
+        .page-head {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .page-head h1 {
+            margin: 0;
+            font-size: clamp(3rem, 5vw, 4.2rem);
+            line-height: 0.98;
+        }
+
+        .page-head p {
+            margin: 1.4rem 0 0;
+            max-width: 56ch;
+            font-size: 1.02rem;
+            line-height: 1.9;
+            color: #4d5c8a;
+        }
+
+        .content {
+            max-width: 1140px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1.25fr 0.95fr;
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 32px;
+            padding: 2rem;
+            box-shadow: 0 26px 70px rgba(20, 46, 90, 0.08);
+            border: 1px solid rgba(115, 146, 255, 0.08);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.3rem;
+            color: #172d5d;
+        }
+
+        .card p,
+        .card li {
+            color: #4c5b8a;
+            line-height: 1.85;
+        }
+
+        .card ul {
+            padding-left: 1.2rem;
+            margin: 1rem 0 0;
+            color: #4c5b8a;
+        }
+
+        .card ul li {
+            margin-bottom: 0.85rem;
+        }
+
+        .highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.85rem 1rem;
+            border-radius: 999px;
+            background: rgba(47, 69, 247, 0.1);
+            color: #1f2f72;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .steps {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0;
+            counter-reset: step;
+        }
+
+        .steps li {
+            position: relative;
+            padding-left: 4rem;
+            margin-bottom: 1.5rem;
+            color: #4c5b8a;
+        }
+
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            top: 0.1rem;
+            left: 0;
+            width: 3rem;
+            height: 3rem;
+            display: grid;
+            place-items: center;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, #2f45f7, #5f76ff);
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 18px 35px rgba(47, 69, 247, 0.22);
+        }
+
+        .sidebar {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .sidebar-card {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 28px;
+            padding: 1.6rem 1.5rem;
+            border: 1px solid rgba(115, 146, 255, 0.08);
+            box-shadow: 0 18px 38px rgba(20, 46, 90, 0.06);
+        }
+
+        .sidebar-card strong {
+            display: block;
+            font-size: 1.06rem;
+            color: #1e2d59;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-card p {
+            margin: 0;
+        }
+
+        .cta-card {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(47, 69, 247, 0.12), rgba(95, 118, 255, 0.16));
+        }
+
+        .cta-card p {
+            margin: 0 0 1.4rem;
+            color: #1f2f72;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.95rem 1.75rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #2f45f7, #5f76ff);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 18px 35px rgba(47, 69, 247, 0.22);
+        }
+
+        .footer {
+            max-width: 1140px;
+            margin: 0 auto 2rem;
+            padding: 0 2rem;
+            color: #4f608c;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        @media (max-width: 960px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 1rem 1.25rem;
+            }
+
+            .page-head {
+                padding: 2.5rem 1.25rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="brand">
+            <img src="MEDIA/file_000000000e5071f49ad4fd8a62d7524c.png" alt="Kijomoro S.S logo" />
+            <div class="brand-title">
+                <strong>Kijomoro S.S</strong>
+                <span>Admission</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="admission.html" class="active">Admission</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-head">
+            <h1>Admission at Kijomoro Secondary School</h1>
+            <p>
+                Start your journey with a school committed to academic excellence, character development, and community
+                leadership.
+                Read the admission requirements, application steps, and support options for new learners.
+            </p>
+        </section>
+
+        <section class="content">
+            <article class="card">
+                <div class="highlight">Step-by-step admission support</div>
+
+                <h2>Admission requirements</h2>
+                <p>
+                    Applicants should be prepared to join our learning community with the right documentation and a
+                    strong willingness to grow.
+                    Here is the information needed for a successful application.
+                </p>
+                <ul>
+                    <li>Completed application form with parent or guardian details</li>
+                    <li>Certified copy of previous school report or transfer letter</li>
+                    <li>Birth certificate or national ID copy for age verification</li>
+                    <li>Two passport photographs and contact information for guardians</li>
+                </ul>
+
+                <h2>School fees</h2>
+                <p>
+                    Kijomoro Secondary School offers a clear and affordable fee structure for day and boarding students.
+                    Fees are shown separately for O-Level and A-Level students.
+                </p>
+                <ul>
+                    <li><strong>O-Level day students (Forms 1–4):</strong> UGX 199,660 – 200,000</li>
+                    <li><strong>O-Level boarding students (Forms 1–4):</strong> UGX 326,600</li>
+                    <li><strong>A-Level day students (Forms 5–6):</strong> UGX 180,600</li>
+                    <li><strong>A-Level boarding students (Forms 5–6):</strong> UGX 326,600</li>
+                </ul>
+
+                <h2>Application steps</h2>
+                <ol class="steps">
+                    <li>Download the application form or collect it from our school office.</li>
+                    <li>Complete the form with accurate personal and academic details.</li>
+                    <li>Attach the required documents and submit them to the admissions desk.</li>
+                    <li>Attend a brief interview or orientation session with school staff.</li>
+                    <li>Receive your admission decision and prepare for the new academic term.</li>
+                </ol>
+
+                <h2>Why choose Kijomoro S.S?</h2>
+                <p>
+                    We blend strong academics with extracurriculars, leadership training, and a supportive environment.
+                    Our students grow as learners, athletes, and responsible citizens.
+                </p>
+            </article>
+
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <strong>Key admission dates</strong>
+                    <p>
+                        Applications are open now. Interviews begin August 1st and continue through September. Secure
+                        your place early.
+                    </p>
+                </div>
+
+                <div class="sidebar-card cta-card">
+                    <strong>Ready to apply?</strong>
+                    <p>Visit the school office or contact us to get your application pack today.</p>
+                    <a href="mailto:admissions@kijomoro-ss.sch" class="cta-button">Email Admissions</a>
+                </div>
+
+                <div class="sidebar-card">
+                    <strong>Contact information</strong>
+                    <p>Phone: +255 123 456 789</p>
+                    <p>Email: admissions@kijomoro-ss.sch</p>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Need help with your application? Our admissions office is ready to support every student and parent.</p>
+    </footer>
+</body>
+
+</html>
